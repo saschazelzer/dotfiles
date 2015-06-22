@@ -1,9 +1,13 @@
 - clean: ['~']
 - link:
+    ~/.dircolors: dircolors
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.vim: vim/
     ~/.vimrc: vimrc
+    ~/.Xresources: Xresources
+    ~/.config/terminator: config/terminator/
+    ~/.gconf/apps/gnome-terminal: gconf/apps/gnome-terminal/
 
 - shell:
     - git update-submodules
