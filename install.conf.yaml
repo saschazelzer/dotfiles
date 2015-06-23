@@ -3,6 +3,7 @@
     ~/.dircolors: dircolors
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
+    ~/.minttyrc: minttyrc
     ~/.vim: vim/
     ~/.vimrc: vimrc
     ~/.Xresources: Xresources
