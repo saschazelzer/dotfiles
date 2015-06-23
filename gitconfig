@@ -35,12 +35,10 @@
 	untracked = red
 [push]
 	# 'git push' should only do the current branch, not all
-	default = current
+	default = simple
 [branch]
 	# always setup 'git pull' to rebase instead of merge
 	autosetuprebase = always
-[http]
-	sslverify = false
 
 # Allow local customizations in the .gitconfig_local file
 [include]
