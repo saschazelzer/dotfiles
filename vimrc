@@ -7,11 +7,45 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
 
-"------------------
-" Syntax and indent
-"------------------
-syntax on " turn on syntax highlighting
-set showmatch " show matching braces when text indicator is over them
+
+" ================ General Config ====================
+
+set number                      "Line numbers are good
+set backspace=indent,eol,start  "Allow backspace in insert mode
+set history=1000                "Store lots of :cmdline history
+set showcmd                     "Show incomplete cmds down the bottom
+set showmode                    "Show current mode down the bottom
+set gcr=a:blinkon0              "Disable cursor blink
+set visualbell                  "No sounds
+set autoread                    "Reload files changed outside vim
+set showmatch                   "show matching braces when text indicator is over them
+set rnu                         "relative line numbering
+exec "set listchars=tab:>>,nbsp:~"
+set lbr                         "line break
+set ruler                       "show current position in file
+set noshowmode                  "hide mode
+set laststatus=2
+set timeout timeoutlen=1000 ttimeoutlen=100 " fix slow O inserts
+set autochdir                   "automatically set current directory to directory of last opened file
+set nojoinspaces                "suppress inserting two spaces between sentences
+
+" toggle relative numbering
+nnoremap <C-n> :set rnu!<CR>
+
+"
+" This makes vim act like all other editors, buffers can
+" exist in the background without being in a window.
+" http://items.sjbach.com/319/configuring-vim-right
+set hidden
+
+"turn on syntax highlighting
+syntax on
+
+" Change leader to a comma because the backslash is too far away
+" That means all \x commands turn into ,x
+" The mapleader has to be set before vundle starts loading all 
+" the plugins.
+"let mapleader=","
 
 " highlight current line, but only in active window
 augroup CursorLineOnlyInActiveWindow
@@ -19,6 +53,8 @@ augroup CursorLineOnlyInActiveWindow
     autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
     autocmd WinLeave * setlocal nocursorline
 augroup END
+
+" ================ Color Config ====================
 
 " vim can autodetect this based on $TERM (e.g. 'xterm-256color')
 " but it can be set to force 256 colors
@@ -44,48 +80,15 @@ else
     let g:NeatStatusLine_color_filetype='ctermfg=37 ctermbg=235 cterm=bold'
 endif
 
-filetype plugin indent on " enable file type detection
-set autoindent
+" ================ Mouse support ====================
 
-"---------------------
-" Basic editing config
-"---------------------
-set nu " number lines
-set rnu " relative line numbering
-set incsearch " incremental search (as string is being typed)
-set hls " highlight search
-exec "set listchars=tab:>>,nbsp:~"
-set lbr " line break
-set ruler " show current position in file
-set scrolloff=5 " show lines above and below cursor (when possible)
-set noshowmode " hide mode
-set laststatus=2
-set backspace=indent,eol,start " allow backspacing over everything
-set timeout timeoutlen=1000 ttimeoutlen=100 " fix slow O inserts
-set autochdir " automatically set current directory to directory of last opened file
-set hidden " allow auto-hiding of edited buffers
-set history=8192 " more history
-set nojoinspaces " suppress inserting two spaces between sentences
-" use 4 spaces instead of tabs during formatting
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-" smart case-sensitive search
-set ignorecase
-set smartcase
-" tab completion for files/bufferss
-set wildmode=longest,list
-set wildmenu
 set mouse+=a " enable mouse mode (scrolling, selection, etc)
 if &term =~ '^screen'
     " tmux knows the extended mouse mode
     set ttymouse=xterm2
 endif
 
-"--------------------
-" Misc configurations
-"--------------------
+" ================ Window config ====================
 
 " open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -103,32 +106,78 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" toggle relative numbering
-nnoremap <C-n> :set rnu!<CR>
+" ================ Turn Off Swap Files ==============
 
-"---------------------
-" Plugin configuration
-"---------------------
+set noswapfile
+set nobackup
+set nowb
 
-" tagbar
-nnoremap <C-\> :TagbarToggle<CR>
-
-" gundo
-nnoremap <Leader>u :GundoToggle<CR>
-
-" ctrlp
-nnoremap ; :CtrlPBuffer<CR>
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_show_hidden = 1
-
-" ag
-let g:ag_mapping_message=0
-command -nargs=+ Gag Gcd | Ag! <args>
-nnoremap K :Gag "\b<C-R><C-W>\b"<CR>:cw<CR>
-if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+if has('persistent_undo')
+    silent !mkdir ~/.vim/backups > /dev/null 2>&1
+    set undodir=~/.vim/backups
+    set undofile
 endif
 
+ " ================ Indentation ======================
+
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+
+filetype plugin on
+filetype indent on
+
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
+
+set nowrap       "Don't wrap lines
+set linebreak    "Wrap lines at convenient points
+
+" ================ Folds ============================
+
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+
+" ================ Completion =======================
+
+set wildmode=list:longest
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
+
+          "
+" ================ Scrolling ========================
+
+set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
+
+" ================ Search ===========================
+
+set incsearch       " Find the next match as we type the search
+set hlsearch        " Highlight searches by default
+set ignorecase      " Ignore case when searching...
+set smartcase       " ...unless we type a capital
+
+" ================ Custom Settings ========================
+so ~/.vim/settings.vim
+          "
 "---------------------
 " Local customizations
 "---------------------
