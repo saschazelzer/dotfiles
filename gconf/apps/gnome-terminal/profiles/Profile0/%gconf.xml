@@ -5,13 +5,13 @@
 	</entry>
 	<entry name="alternate_screen_scroll" mtime="1435000302" type="bool" value="true"/>
 	<entry name="use_custom_command" mtime="1435000302" type="bool" value="false"/>
-	<entry name="font" mtime="1435000302" type="string">
-		<stringvalue>Monospace 12</stringvalue>
+	<entry name="font" mtime="1435184397" type="string">
+		<stringvalue>Droid Sans Mono for Powerline 10</stringvalue>
 	</entry>
 	<entry name="scrollbar_position" mtime="1435000302" type="string">
 		<stringvalue>right</stringvalue>
 	</entry>
-	<entry name="use_system_font" mtime="1435000302" type="bool" value="true"/>
+	<entry name="use_system_font" mtime="1435184359" type="bool" value="false"/>
 	<entry name="word_chars" mtime="1435000302" type="string">
 		<stringvalue>-A-Za-z0-9,./?%&amp;#:_=+@~</stringvalue>
 	</entry>
