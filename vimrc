@@ -45,7 +45,7 @@ syntax on
 " That means all \x commands turn into ,x
 " The mapleader has to be set before vundle starts loading all 
 " the plugins.
-"let mapleader=","
+let mapleader=","
 
 " highlight current line, but only in active window
 augroup CursorLineOnlyInActiveWindow
@@ -173,6 +173,10 @@ set incsearch       " Find the next match as we type the search
 set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
+
+" ================ File locations ===================
+
+set tags=.tags;
 
 " ================ Custom Settings ========================
 so ~/.vim/settings.vim
