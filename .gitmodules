@@ -39,4 +39,4 @@
 	url = https://github.com/vim-scripts/SyntaxRange
 [submodule "vim/bundle/vim-asciidoc"]
 	path = vim/bundle/vim-asciidoc
-	url = https://github.com/dahu/vim-asciidoc.git
+	url = git@github.com:saschazelzer/vim-asciidoc.git
