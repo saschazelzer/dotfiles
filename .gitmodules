@@ -25,3 +25,18 @@
 [submodule "vim/bundle/YouCompleteMe"]
 	path = vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe
+[submodule "vim/bundle/VOoM"]
+	path = vim/bundle/VOoM
+	url = https://github.com/vim-voom/VOoM
+[submodule "vim/bundle/vimple"]
+	path = vim/bundle/vimple
+	url = https://github.com/dahu/vimple
+[submodule "vim/bundle/Asif"]
+	path = vim/bundle/Asif
+	url = https://github.com/dahu/Asif
+[submodule "vim/bundle/SyntaxRange"]
+	path = vim/bundle/SyntaxRange
+	url = https://github.com/vim-scripts/SyntaxRange
+[submodule "vim/bundle/vim-asciidoc"]
+	path = vim/bundle/vim-asciidoc
+	url = https://github.com/dahu/vim-asciidoc.git
