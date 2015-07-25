@@ -1,5 +1,6 @@
 # tags files
 tags
+.tags
 
 # Compiled Object files
 *.slo
