@@ -40,3 +40,6 @@
 [submodule "vim/bundle/vim-asciidoc"]
 	path = vim/bundle/vim-asciidoc
 	url = git@github.com:saschazelzer/vim-asciidoc.git
+[submodule "vim/bundle/ultisnips"]
+	path = vim/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips
