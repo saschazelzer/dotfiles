@@ -1,25 +1,26 @@
 [global_config]
   focus = system
+  suppress_multiple_term_dialog = True
 [keybindings]
-[profiles]
-  [[default]]
-    scrollbar_position = hidden
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
-    background_image = None
-    custom_command = env TERM=xterm-256color bash
-    scrollback_lines = 5000
-    use_system_font = False
-    foreground_color = "#839496"
-    use_custom_command = True
-    scroll_on_output = False
-    font = Inconsolata-dz for Powerline Medium 10
-    background_color = "#002b36"
 [layouts]
   [[default]]
     [[[child1]]]
-      type = Terminal
       parent = window0
+      type = Terminal
     [[[window0]]]
-      type = Window
       parent = ""
+      type = Window
 [plugins]
+[profiles]
+  [[default]]
+    background_color = "#fdf6e3"
+    background_image = None
+    custom_command = env TERM=xterm-256color bash
+    font = Inconsolata-dz for Powerline Medium 10
+    foreground_color = "#657b83"
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    scroll_on_output = False
+    scrollback_lines = 5000
+    scrollbar_position = hidden
+    use_custom_command = True
+    use_system_font = False

@@ -9,11 +9,11 @@
     ~/.vim/ftdetect: vim/bundle/ultisnips/ftdetect
     ~/.vimrc: vimrc
     ~/.Xresources: Xresources
-    ~/.ycm_extra_conf.py: ycm_extra_conf.py
+  # ~/.ycm_extra_conf.py: ycm_extra_conf.py
     ~/.Xresources.d: Xresources.d/
     ~/.config/terminator: config/terminator/
     ~/.gconf/apps/gnome-terminal: gconf/apps/gnome-terminal/
 
 - shell:
     - git update-submodules
-    - cd vim/bundle/YouCompleteMe/ && git update-submodules
+  # - cd vim/bundle/YouCompleteMe/ && git update-submodules

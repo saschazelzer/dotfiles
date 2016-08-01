@@ -4,6 +4,11 @@ set nocompatible " not vi compatible
 " Load pathogen
 "--------------
 runtime bundle/vim-pathogen/autoload/pathogen.vim
+
+" To disable a plugin, add it's bundle name to the following list
+let g:pathogen_disabled = []
+call add(g:pathogen_disabled, 'YouCompleteMe')
+
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -55,19 +60,23 @@ augroup CursorLineOnlyInActiveWindow
 augroup END
 
 " moving lines
-nnoremap j :m+<CR>==
-nnoremap k :m-2<CR>==
-inoremap j <Esc>:m+<CR>==gi
-inoremap k <Esc>:m-2<CR>==gi
-vnoremap j :m'>+<CR>gv=gv
-vnoremap k :m-2<CR>gv=gv
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+if (has('gui_running'))
+  set guifont=Inconsolata-dz\ for\ Powerline\ Medium\ 10
+endif
 
 " ================ Color Config ====================
 
 " vim can autodetect this based on $TERM (e.g. 'xterm-256color')
 " but it can be set to force 256 colors
 " set t_Co=256
-if &t_Co < 256
+if (&t_Co < 256 && !has('gui_running'))
     colorscheme default
     set nocursorline " looks bad in this mode
 else
