@@ -2,6 +2,7 @@
 - link:
     ~/.ctags: ctags
     ~/.dircolors: dircolors
+    ~/.fonts: fonts
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.minttyrc: minttyrc
